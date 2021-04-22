@@ -12,3 +12,8 @@ Fortunately the underlying source code, found at [INNA](https://www.iana.org/tim
 has this function available by changing compilation options. This project
 uses that code to build a small library to provide `localtime_rz()` and
 a C++ class to wrap it in.
+
+# Documentation
+
+Documentation for [cpp_local_time](https://codedocs.xyz/pa28/cpp_local_time/)
+is hosted by [codedocs.xyz](https://codedocs.xyz).
