@@ -102,6 +102,8 @@ namespace cpp_local_time {
          * @return The manipulator object.
          */
         [[nodiscard]] PutLocalTime put(const std::string& fmt) const;
+
+        [[nodiscard]] PutLocalTime put(std::string_view fmt) const;
     };
 
     /**

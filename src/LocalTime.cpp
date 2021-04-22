@@ -37,4 +37,8 @@ namespace cpp_local_time {
     PutLocalTime LocalTime::put(const std::string &fmt) const {
         return put(fmt.c_str());
     }
+
+    PutLocalTime LocalTime::put(const std::string_view fmt) const {
+        return put(std::string{fmt}.c_str());
+    }
 }
