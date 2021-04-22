@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-project(cpp_local_time VERSION 0.1.10.1)
+project(cpp_local_time VERSION 0.1.11.1)
 set(PACKAGE_CONTACT "Richard Buckley <richard.buckley>@ieee.org>")
 include(GNUInstallDirs)
 
