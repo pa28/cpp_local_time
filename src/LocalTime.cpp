@@ -29,16 +29,4 @@ namespace cpp_local_time {
             return localtime_rz(static_cast<timezone_t>(timeZone), &currentEpoch, &timeStruct) != nullptr;
         return localtime_r(&currentEpoch, &timeStruct) != nullptr;
     }
-
-    PutLocalTime LocalTime::put(const char *fmt) const {
-        return PutLocalTime{*this,fmt};
-    }
-
-    PutLocalTime LocalTime::put(const std::string &fmt) const {
-        return put(fmt.c_str());
-    }
-
-    PutLocalTime LocalTime::put(const std::string_view fmt) const {
-        return put(std::string{fmt}.c_str());
-    }
 }

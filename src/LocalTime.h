@@ -9,8 +9,10 @@
 
 #include <string>
 #include <ctime>
+#include <cstring>
 #include <iostream>
 #include <iomanip>
+#include <utility>
 
 namespace cpp_local_time {
 
@@ -94,16 +96,8 @@ namespace cpp_local_time {
          * @param fmt A format string. See std::put_time()
          * @return The manipulator object.
          */
-        PutLocalTime put(const char *fmt) const;
-
-        /**
-         * @brief A stream manipulator to output the time using the specified format.
-         * @param fmt A format string. See std::put_time()
-         * @return The manipulator object.
-         */
-        [[nodiscard]] PutLocalTime put(const std::string& fmt) const;
-
-        [[nodiscard]] PutLocalTime put(std::string_view fmt) const;
+        template<typename S>
+        PutLocalTime put(S fmt) const;
     };
 
     /**
@@ -112,12 +106,19 @@ namespace cpp_local_time {
      */
     struct PutLocalTime {
         const LocalTime &localTime;
-        const char *fmt;
+        std::string fmt;
         PutLocalTime() = delete;
 
         [[nodiscard]] const struct tm* getTimeStruct() const { return &localTime.timeStruct; }
-        PutLocalTime(const LocalTime& localTimeRef, const char *format) : localTime(localTimeRef), fmt(format) {}
+        PutLocalTime(const LocalTime& localTimeRef, std::string format) : localTime(localTimeRef), fmt(std::move(format)) {}
     };
+
+    template<typename S>
+    PutLocalTime LocalTime::put(S fmt) const {
+        if constexpr (std::is_same_v<std::string,S>)
+            return PutLocalTime(*this, fmt);
+        return PutLocalTime(*this, std::string{fmt});
+    }
 }
 
 /**
@@ -127,5 +128,5 @@ namespace cpp_local_time {
  * @return The output stream.
  */
 inline std::ostream& operator<<(std::ostream& strm, const cpp_local_time::PutLocalTime& putLocalTime) {
-    return strm << std::put_time(putLocalTime.getTimeStruct(), putLocalTime.fmt);
+    return strm << std::put_time(putLocalTime.getTimeStruct(), putLocalTime.fmt.c_str());
 }

@@ -21,10 +21,14 @@ int main() {
     localTime = gmt.epoch();
     localTime.getZoneTime();
 
-    std::cout << gmt.put("%R:%S %Z\n");
-    std::cout << zone1.put("%R:%S %Z\n");
-    std::cout << zone2.put("%R:%S %Z\n");
-    std::cout << localTime.put("%R:%S %Z\n");
+    std::string_view fmt_view{"%R:%S %Z\n"};
+
+    auto fmt = std::string{fmt_view};
+
+    std::cout << gmt.put(fmt_view);
+    std::cout << zone1.put(fmt);
+    std::cout << zone2.put(fmt);
+    std::cout << localTime.put(fmt);
 
     return 0;
 }
