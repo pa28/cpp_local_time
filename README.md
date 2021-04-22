@@ -1,3 +1,5 @@
+[![docs available](https://img.shields.io/badge/Docs-Available-brightgreen)](https://codedocs.xyz/pa28/cpp_local_time/)
+
 # cpp_local_time
 CPP Library that support display of local time for arbitrary time zones.
 
