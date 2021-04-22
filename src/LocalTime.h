@@ -14,20 +14,25 @@
 #include <iomanip>
 #include <utility>
 
+/**
+ * @namespace cpp_local_time
+ * @brief Isolate from other code.
+ */
 namespace cpp_local_time {
+
+    struct PutLocalTime;
 
     /**
      * @class LocalTime
      * @brief A class for displaying the local time for an arbitrary time zone.
      */
-    struct PutLocalTime;
     class LocalTime {
         friend struct PutLocalTime;
 
     protected:
         std::string timeZoneName;   ///< The time zone to use, of empty use the system local time.
         void *timeZone;             ///< The time zone data derived from timeZoneName.
-        time_t currentEpoch;               ///< The epoch to convert.
+        time_t currentEpoch;        ///< The epoch to convert.
         struct tm timeStruct{};     ///< Holds the converted epoch.
 
     public:
