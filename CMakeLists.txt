@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-project(cpp_local_time VERSION 0.1.7.1)
+project(cpp_local_time VERSION 0.1.10.1)
 set(PACKAGE_CONTACT "Richard Buckley <richard.buckley>@ieee.org>")
 include(GNUInstallDirs)
 
@@ -65,6 +65,8 @@ install(
         FILES_MATCHING PATTERN "*.h")
 
 set(PACKAGE_INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}")
+set(PACKAGE_LIBRARY_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
+set(PACKAGE_LIBRARY_INSTALL_FILE "lib${PROJECT_NAME}.a")
 set(PACKAGE_LIBRARY_NAME "${PROJECT_NAME}")
 
 install(

@@ -1,6 +1,21 @@
+# Confirm the package development files: include directory, and library are where they should be according
+# To the build configuration.
+#
+# Set LOCALTIME_INCLUDE_DIR to the include path.
+# Set LOCALTIME_LIBRARY to the library name.
+# Set LOCALTIME_LIBRARY_PATH to the library install directory path.
+
 @PACKAGE_INIT@
-#include( "${CMAKE_CURRENT_LIST_DIR}/LocalTimeTargets.cmake" )
+
+macro(set_and_check_value _var _value _file)
+    set(${_var} "${_value}")
+    if(NOT EXISTS "${_file}")
+        message(FATAL_ERROR "File or directory ${_file} referenced by variable ${_var} does not exist !")
+    endif()
+endmacro()
+
 set_and_check(LOCALTIME_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
-set(LOCALTIME_LIBRARY "@PACKAGE_LIBRARY_NAME@")
+set_and_check_value(LOCALTIME_LIBRARY "@PACKAGE_LIBRARY_NAME@" "@PACKAGE_LIBRARY_INSTALL_DIR@/@PACKAGE_LIBRARY_INSTALL_FILE@")
+set_and_check_value(LOCALTIME_LIBRARY_PATH "@PACKAGE_LIBRARY_INSTALL_DIR@" "@PACKAGE_LIBRARY_INSTALL_DIR@/@PACKAGE_LIBRARY_INSTALL_FILE@")
 
 check_required_components(LocalTime)
