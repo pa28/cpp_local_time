@@ -66,6 +66,9 @@ if (CMAKE_BUILD_TYPE MATCHES "^[Dd]ocuments")
     endif (DOXYGEN_FOUND)
 endif ()
 
+add_executable(LocalTime main.cpp)
+target_link_libraries(LocalTime cpp_local_time)
+
 add_custom_target(changelog ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/changelog.gz")
 add_dependencies(changelog cpp_local_time)
 
@@ -73,9 +76,6 @@ add_compile_definitions("NETBSD_INSPIRED=1")
 
 list(APPEND LOCAL_TIME_SOURCE src/LocalTime.h src/LocalTime.cpp tzfiles/localtime.c)
 add_library(cpp_local_time STATIC ${LOCAL_TIME_SOURCE})
-
-add_executable(LocalTime main.cpp)
-target_link_libraries(LocalTime cpp_local_time)
 
 install(
         TARGETS cpp_local_time
