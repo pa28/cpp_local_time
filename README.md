@@ -1,5 +1,5 @@
 [![docs available](https://img.shields.io/badge/Docs-Available-brightgreen)](https://codedocs.xyz/pa28/cpp_local_time/)
-![DEB Version 0.1.11](https://img.shields.io/badge/DEB-0.1.11-blue)
+[![DEB Version 0.1.11](https://img.shields.io/badge/DEB-0.1.11-blue)](https://github.com/pa28/cpp_local_time/releases/tag/v0.1.11)
 
 # cpp_local_time
 CPP Library that support display of local time for arbitrary time zones.
