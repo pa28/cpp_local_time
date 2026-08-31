@@ -11,7 +11,7 @@ a programmer to easily display times in timezones that are not GMT or the
 system local time zone. Unfortunately not all systems have this function
 available yet.
 
-Fortunately the underlying source code, found at [INNA](https://www.iana.org/time-zones),
+Fortunately the underlying source code, found at [IANA](https://www.iana.org/time-zones),
 has this function available by changing compilation options. This project
 uses that code to build a small library to provide `localtime_rz()` and
 a C++ class to wrap it in.
